@@ -49,7 +49,7 @@ titleplots.style.display= 'none';
 let tableDiv = document.querySelector(".tableDiv");
 const searchEvent = () =>{
     const cityName = citySelect.value
-    let geoApi = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&appid=${apiKey}`
+    let geoApi = `https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&appid=${apiKey}`
     fetch(geoApi)
     .then(response => response.json())
     .then(data=> {

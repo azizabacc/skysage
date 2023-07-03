@@ -17,7 +17,7 @@ let tableContainer3 = document.querySelector('#tab3');
 export const forecast = (lat,lon,averageTempByDay,averageWindSpeedByDay,resumecardDisplayer) =>{ 
     let headerData = document.createElement('div')
 headerData.id='headerData';
-    let forecastApi = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&&units=metric&lang=english&appid=${apiKey}`;
+    let forecastApi = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&&units=metric&lang=english&appid=${apiKey}`;
 fetch(forecastApi)
 .then(response => response.json())
 .then(data=> {
