@@ -1,9 +1,8 @@
 
-import { timestampConvertor , meanTemperature} from './functions.js';
-import { coordData,resumeCard } from './tags.js';
-import { plot } from './plots.js';
 import { forecast ,forecast3hours } from './forecasts.js';
 import { config } from './config.js';
+import { divClassId,title } from './element.js';
+import { showTab } from './buttonEvents.JS';
 
 /* const apiKey ="0ecda526c9c0b753226bce63f940887d" */
 const apiKey = config.MY_KEY
@@ -14,38 +13,26 @@ const citySbmitBtn = document.getElementById('submitCity');
 const main = document.querySelector('main');
 const header = document.querySelector('header');
 
-const resumecardDisplayer = document.createElement('div');
-resumecardDisplayer.id = "resumecardDisplayer";
-resumecardDisplayer.className ="resumecardDisplayer resumecardDisplayerhidden"
+const resumecardDisplayer = divClassId("resumecardDisplayer resumecardDisplayerhidden","resumecardDisplayer")
+const resumecardDisplayer3hours = divClassId("resumecardDisplayer","resumecardDisplayer3hours");
 
-const resumecardDisplayer3hours = document.createElement('div');
-resumecardDisplayer3hours.id = "resumecardDisplayer3hours";
-resumecardDisplayer3hours.className ="resumecardDisplayer"
 
 const plots = document.createElement('div');
 plots.className ="plots plotHidden";
-const tempPlot = document.createElement('div');
-tempPlot.id = "tempPlot";
-tempPlot.className ='plot';
 
-const windPlot = document.createElement('div');
-windPlot.id = "windPlot";
-windPlot.className ='plot'
-const humidityPlot = document.createElement('div');
-humidityPlot.id = "humidityPlot";
-humidityPlot.className ='plot'
+const tempPlot = divClassId('plot',"tempPlot")
+const windPlot = divClassId('plot',"windPlot")
+const humidityPlot = divClassId('plot',"humidityPlot")
+const pressurePlot = divClassId('plot',"pressurePlot")
+
 
 //title sections
 //title forcast per day
-let titleAverage = document.createElement('h2');
-titleAverage.className = 'titleSection';
-titleAverage.innerHTML= '5 Days Extended Forecast ';
-titleAverage.style.display= 'none';
+let titleAverage = title('5 Days Extended Forecast ')
+
 //title forcast graph
-let titleplots = document.createElement('h2');
-titleplots.className = 'titleSection';
-titleplots.innerHTML = 'Forcasts Graphics Over 5 Days ';
-titleplots.style.display= 'none';
+let titleplots = title('Forcasts Graphics Over 5 Days ')
+
 let tableDiv = document.querySelector(".tableDiv");
 const searchEvent = () =>{
     const cityName = citySelect.value
@@ -93,6 +80,13 @@ titleAverage.addEventListener('click', ()=>{
 titleplots.addEventListener('click',()=>{
   plots.classList.toggle("plotHidden");
 })
+//tile to show menu btns for tabs
+let titleTables = document.getElementById('titleTables');
+let tableMenuBtns = document.getElementById('tableMenuBtns');
+titleTables.addEventListener('click', ()=>{
+  tableMenuBtns.classList.toggle("btnHidden");
+
+})
 //Buttons
 let mixteTableBtn = document.getElementById("mixteTableBtn");
 let windTableBtn = document.getElementById("windTableBtn");
@@ -104,21 +98,17 @@ let tab2 = document.getElementById("tab2");
 let tab3 = document.getElementById("tab3");
 
 mixteTableBtn.addEventListener('click', ()=>{
-  tab1.classList.add('visible');
-  tab2.classList.remove('visible');
-  tab3.classList.remove('visible');
+showTab(tab1,tab2,tab3);
 })
 
 windTableBtn.addEventListener('click', ()=>{
-tab2.classList.add('visible');
-tab1.classList.remove('visible');
-tab3.classList.remove('visible');
+showTab(tab2,tab1,tab3);
+
 })
 
 depressionTableBtn.addEventListener('click', ()=>{
-tab3.classList.add('visible');
-tab1.classList.remove('visible');
-tab2.classList.remove('visible');
+  showTab(tab3,tab1,tab2);
+
 }) 
   
 main.append(titleAverage)
@@ -127,6 +117,7 @@ main.append(titleplots)
 plots.append(tempPlot)
 plots.append(windPlot)
 plots.append(humidityPlot)
+plots.append(pressurePlot)
 main.append(plots)
 
 

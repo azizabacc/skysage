@@ -217,6 +217,12 @@
   main.hidden {
     display: none;
   }
+  main .plots {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: row;
+  }
   main .plots.plotHidden {
     display: none;
   }
@@ -329,7 +335,7 @@
   .tableDiv .titleSection:hover {
     color: #EA7317;
   }
-  .tableDiv .tableMenuBtns {
+  .tableDiv #tableMenuBtns {
     display: flex;
     font-size: 20px;
     font-weight: bold;
@@ -337,7 +343,11 @@
     flex-direction: column;
     align-items: center;
   }
-  .tableDiv .tableMenuBtns .tableBtn {
+  .tableDiv #tableMenuBtns.btnHidden {
+    display: none;
+  }
+  .tableDiv #tableMenuBtns .tableBtn {
+    cursor: pointer;
     border: 3px solid white;
     padding: 1.7vw;
     border-radius: 12px;
@@ -346,7 +356,7 @@
     width: 72%;
     text-align: center;
   }
-  .tableDiv .tableMenuBtns .tableBtn:hover {
+  .tableDiv #tableMenuBtns .tableBtn:hover {
     transform: scale(1.1);
   }
   .tableDiv .tables .table {
@@ -519,31 +529,31 @@
   }
   body main {
     font-family: sans-serif;
-    padding-bottom: 0px;
     padding: 4vh;
+    padding-bottom: 0px;
     color: hsl(180, 5%, 19%);
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
   }
   body main.hidden {
     display: none;
   }
+  body main .plots {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: row;
+  }
   body main .plots.plotHidden {
     display: none;
-  }
-  body main .plots .plot {
-    width: 100%;
   }
   body main #nowPrediction {
     padding: 4vw;
     border: solid #607D8B;
     background-color: #efeeeb;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    -ms-border-radius: 5px;
-    -o-border-radius: 5px;
-    border-radius: 5px;
+    -webkit-border-radius: 40px;
+    -moz-border-radius: 40px;
+    -ms-border-radius: 40px;
+    -o-border-radius: 40px;
+    border-radius: 40px;
   }
   body main #nowPrediction .dateHourResumeCard {
     display: flex;
@@ -622,21 +632,25 @@
   body .tableDiv .titleSection:hover {
     color: #EA7317;
   }
-  body .tableDiv .tableMenuBtns {
+  body .tableDiv #tableMenuBtns {
     display: flex;
     justify-content: space-around;
     font-size: 20px;
     font-weight: bold;
     margin: 3vw;
   }
-  body .tableDiv .tableMenuBtns .tableBtn {
+  body .tableDiv #tableMenuBtns.btnHidden {
+    display: none;
+  }
+  body .tableDiv #tableMenuBtns .tableBtn {
+    cursor: pointer;
     border: 3px solid white;
     padding: 1.7vw;
     border-radius: 12px;
     background-color: #23282A;
     color: rgba(255, 255, 255, 0.8);
   }
-  body .tableDiv .tableMenuBtns .tableBtn:hover {
+  body .tableDiv #tableMenuBtns .tableBtn:hover {
     transform: scale(1.1);
   }
   body .tableDiv .tables .table {

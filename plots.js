@@ -46,8 +46,8 @@ export const plotErrorBar = (dataX,dataY,dataError,div,tit,xtit,ytit) =>{
         type: 'data',
         array: dataError,
         visible: true,
-        color: 'red', // Couleur des barres d'erreur
-        thickness: 1 // Épaisseur des barres d'erreur
+        color: 'red',
+        thickness: 2.5
       },
       type: 'scatter'
     }
@@ -71,5 +71,5 @@ export const plotErrorBar = (dataX,dataY,dataError,div,tit,xtit,ytit) =>{
 
   } 
   var config = {responsive: true}
-  Plotly.newPlot(div, data);
+  Plotly.newPlot(div, data,config,layout,{scrollZoom: true},{editable: true});
 }
