@@ -1,0 +1,745 @@
+// ==== GOOGLE FONTS ====
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500&display=swap");
+
+// ==== VARIABLES SCSS ====
+$body-font: "Roboto", sans-serif;
+
+// ==== Colors ====
+$skyLight: #4b535a;
+$skyDark: #222729;
+
+
+$text-color: hsl(180, 5%, 19%); // Couleur principale de texte
+$text-color-light: hsl(0, 0%, 100%); // Couleur de texte sur fond sombre
+$white: #FFFFFF;
+
+$sunLight: #FEC601;
+$sunDark: #EA7317;
+$cloudLight: #DBE4EE;
+$cloudDark: #A9BBCF;
+$darkCloudLight: #90A7BF;
+$darkCloudDark: #7792AF;
+$raindrop: #0A81D1;
+$nightLight: #ECE4B7;
+$nightDark: #BFADA3;
+
+  @mixin background($colour1, $colour2) {
+    background: -webkit-linear-gradient($colour1, $colour2);
+    background: -moz-linear-gradient($colour1, $colour2);
+    background: -ms-linear-gradient($colour1, $colour2);
+    background: -o-linear-gradient($colour1, $colour2);
+    background: linear-gradient($colour1, $colour2);
+ }
+  @mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    -o-border-radius: $radius;
+    border-radius: $radius;
+  }
+  @mixin rotate($degrees) {
+    -webkit-transform: rotate($degrees);
+    -moz-transform: rotate($degrees);
+    -ms-transform: rotate($degrees);
+    -o-transform: rotate($degrees);
+    transform: rotate($degrees);
+  }
+  @mixin scale($points) {
+    -webkit-transform: scale($points);
+    -moz-transform: scale($points);
+    -ms-transform: scale($points);
+    -o-transform: scale($points);
+    transform: scale($points);
+  }
+  @mixin fadeIn($seconds) {
+    -webkit-animation: fadein $seconds;
+    -moz-animation: fadein $seconds;
+    -ms-animation: fadein $seconds;
+    -o-animation: fadein $seconds;
+    animation: fadein $seconds;
+  }
+  
+ @keyframes sunRotate {
+    from {
+      @include rotate(0deg);
+    }
+    to {
+      @include rotate(359deg);
+    }
+  }
+
+
+  @keyframes moonSwing {
+    0% {
+      @include rotate(125deg);
+    }
+    50% {
+      @include rotate(135deg);
+    }
+    100% {
+      @include rotate(125deg);
+    }
+  }
+  @keyframes starFadeIn {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  @keyframes starFadeOut {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+*{
+    margin : 0;
+    padding: 0;
+
+}
+
+     
+
+@media screen and (max-width: 800px) {
+
+      
+body{
+  background-color: #23282A;
+
+    header{
+        @include background(#222729,#4b535a);
+        color: hsl(0, 0%, 100%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 4vw;
+        height: 100vh;
+        justify-content: space-around;
+
+
+        .topHeader{
+            display: flex;
+            width: 100vw;
+            justify-content: space-between;
+            align-items: center;
+            h1{
+                font-size: 12vw;
+            }
+            .logo{
+                width: 100;
+                height: 100;
+            }
+        }
+        .siteSitation{
+            font-style: italic;
+            text-align: center;
+        }
+        #inputContainer{
+            display: flex;
+            align-items: center;
+            width: 70vw;
+            justify-content: space-evenly;
+         
+            #citySelect{
+                font-size: 1rem;
+                padding: 1rem 0.5rem;
+                border-radius: 0.3rem;
+                /* color: var(--text-color); */
+                /* background-color: var(--search-bar-color); */
+                border: none;
+            }
+            #submitCity{
+              font-size: 3rem;
+              cursor: pointer;
+              &:hover{
+                color: #EA7317;
+              }
+            }
+
+        }
+  
+        #headerData{
+            .headerDataInfos{
+              display: flex;
+              width: 100vw;
+              padding: 0vw;
+              justify-content: space-around;
+              height: 16VW;
+              align-items: center;
+              font-size: 22px;
+              font-weight: bold;
+            }
+            .headerDataLogos{
+                width: 100vw;
+                display: flex;
+                justify-content: space-around;
+                .cityIcon{
+                  .cityImg{
+                    width: 32px;
+                    border-radius: 18px;
+                    margin-top: 9px;
+                    margin-left: 5vw;
+                  }
+                }
+                .visibilityIcon{
+                  .visibilityImg{
+                    width: 45px;
+                  }
+                }
+                .sunriseIcon{
+                    margin-top: 9px;
+                    
+
+                    .sun{    
+                        width: 28px;
+                        height: 28px;
+                    
+                        
+                        @include background($sunLight, $sunDark) ;
+                        @include border-radius(50px) ;
+                        animation: sunRotate 10s infinite linear;
+                        @include rotate(20deg);
+
+                    }
+                    .rays {
+                        width: 28px;
+                        height: 28px;
+                        background: $sunLight;
+                        z-index: 0;
+                        position: absolute;
+
+                        @include rotate(20deg);
+                        animation: sunRotate 10s infinite linear;
+                      }
+                      .rays:after {
+                        content: "";
+                        width: 28px;
+                        height: 28px;
+                        background: $sunLight;
+                        z-index: 0;
+                        position: absolute;
+                        @include rotate(40deg);
+                      }
+                
+            }
+            .sunsetIcon{
+
+          .moon {
+            width: 33px;
+            height: 33px;
+            
+            @include border-radius(50px);
+        
+            box-shadow: 10px 3px 0 0 #ECE4B7;
+            @include rotate(130deg);
+            animation: moonSwing 3s infinite linear;
+            
+          }
+
+          
+        
+
+            }
+            }
+         
+            
+        
+         
+            }
+
+
+                
+    }
+            
+       
+        }
+    
+    main{
+      &.hidden{
+        display: none;
+      }
+      font-family: sans-serif;
+        margin: 1vw;
+        .plots{
+            &.plotHidden{
+              display: none;
+            }
+          
+        }
+        #nowPrediction{
+            padding: 2vw;
+            border: solid #607D8B;
+            background-color: #efeeeb;
+            @include border-radius(5px);
+            .dateHourResumeCard {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                h1{
+                    color: $skyDark
+                }
+                h2{
+                    color: $darkCloudDark;
+                }
+              }
+            .tempContainerResumeCard{
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-end;
+                font-size: 26px;
+                font-weight: bold;
+            }
+            .weatherContainerResumeCard{
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-end;
+                font-size: 26px;
+                font-weight: bold;
+
+            }
+            .windContainerResumeCard{
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-end;
+                font-size: 26px;
+                font-weight: bold;
+
+            }
+            }
+            .titleSection{
+                color: #4e61cd;
+                margin: 15px 0;
+                font-style: italic;
+                cursor: pointer;
+                &:hover{
+                  color: #EA7317;
+                }
+            }
+         
+
+        #resumecardDisplayer{
+            padding: 2vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            height: 150vw;
+            &.resumecardDisplayerhidden{
+              display: none;
+             }
+            .resumeCardContainer{
+                background-color: $cloudLight;
+                @include border-radius(5px);
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                background-color: #DBE4EE;
+                justify-content: space-around;
+                height: 11vh;
+                .dateHour{
+                    font-size: 20px;
+                    font-weight: bold;
+                    color: blue;
+                }
+            .tempContainer{
+                display: flex;
+                width: 19vw;
+              
+                justify-content: space-between;
+                font-size: 19px;
+            }
+            .windContainer{
+                display: flex;
+                width: 19vw;
+              
+                justify-content: space-between;
+                font-size: 19px;
+            }
+               
+                
+            }
+        }
+    }
+        .tableDiv{
+          font-family: sans-serif;
+          padding: 4vh;
+          display: none;
+          padding-top: 0px;
+    padding-left: 0px;
+    margin-left: 1vw;
+        .titleSection{
+          color: #4e61cd;
+          margin: 15px 0;
+          font-style: italic;
+          cursor: pointer;
+          &:hover{
+            color: #EA7317;
+          }
+        }
+        .tableMenuBtns{
+          display: flex;
+          font-size: 20px;
+          font-weight: bold;
+     
+          justify-content: center;
+          flex-direction: column;
+          align-items: center;
+
+    .tableBtn{
+      border: 3px solid white;
+      padding: 1.7vw;
+      border-radius: 12px;
+      background-color: #23282A;
+      color: rgba(255, 255, 255, 0.8);
+      width: 72%;
+      text-align: center;
+      &:hover{
+      transform: scale(1.1);      
+    }
+    }
+   
+        }
+        .tables{
+        
+          .table{
+            display: none;
+         
+            &.visible{display: block;}
+    .data-table{
+        width: 100%;
+        background-color: $cloudLight;
+        text-align: center;
+    border-collapse: collapse;
+    th, td {
+        padding: 5px;
+        font-size: 12px;
+      }
+    }
+      
+      }
+    }
+  
+          }
+
+}
+
+@media screen and (min-width: 800px) {
+    body{
+      background-color: #23282A;
+        header{
+            @include background($skyLight, $skyDark);    
+            color: $text-color-light;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            justify-content: space-around;
+            padding: 2vw;
+            .topHeader{
+                display: flex;
+                width: 100vw;
+            
+                justify-content: space-evenly;
+                    h1{
+                        font-size: 6rem;
+                    }
+                
+            }
+            .siteSitation{
+              font-style: italic;
+              font-size: larger;
+            }
+            #inputContainer{
+                display: flex;
+      
+                align-items: center;
+                width: 47vw;
+                justify-content: center;
+    #citySelect{
+        font-size: 1.4rem;
+        padding: 1rem 2.5rem;
+        border-radius: 0.3rem;
+        margin-right: 1vw;
+        border: none;
+
+    }
+  #submitCity{
+    font-size: 3rem;
+    cursor: pointer;
+    &:hover{
+      color: #EA7317;
+    }
+  }
+          
+            }
+            #headerData{
+              display: flex;
+              justify-content: space-around;
+              width: 100vw;
+              height: 16vh;
+              /* align-items: center; */
+              flex-direction: column;
+   
+            
+            .headerDataLogos{
+              width: 100vw;
+              display: flex;
+              margin-left: 28px;
+              justify-content: space-around;
+              .cityIcon{
+                .cityImg{
+                  width: 32px;
+                  border-radius: 18px;
+                  margin-top: 9px;
+                
+                }
+              }
+                .visibilityIcon{
+                  .visibilityImg{
+                    
+                    width: 45px;
+                    margin-left: 22px;
+                  }
+                }
+                .sunriseIcon{
+                    margin-top: 9px;
+
+                    .sun{    
+                        width: 28px;
+                        height: 28px;
+                    
+                        
+                        @include background($sunLight, $sunDark) ;
+                        @include border-radius(50px) ;
+                        animation: sunRotate 10s infinite linear;
+                        @include rotate(20deg);
+
+                    }
+                    .rays {
+                        width: 28px;
+                        height: 28px;
+                        background: $sunLight;
+                        z-index: 0;
+                        position: absolute;
+
+                        @include rotate(20deg);
+                        animation: sunRotate 10s infinite linear;
+                      }
+                      .rays:after {
+                        content: "";
+                        width: 28px;
+                        height: 28px;
+                        background: $sunLight;
+                        z-index: 0;
+                        position: absolute;
+                        @include rotate(40deg);
+                      }
+                
+            }
+            .sunsetIcon{
+              margin-right: 7px;
+          .moon {
+            width: 33px;
+            height: 33px;
+            
+            @include border-radius(50px);
+        
+            box-shadow: 10px 3px 0 0 #ECE4B7;
+            @include rotate(130deg);
+            animation: moonSwing 3s infinite linear;
+            
+          }
+
+          
+        
+
+            }
+            }
+         
+            .headerDataInfos{
+              display: flex;
+              width: 100vw;
+              padding: 0vw;
+              height: 16VW;
+              align-items: center;
+              justify-content: space-around;
+              font-size: 20px;
+              font-weight: bold;
+            }
+        
+         
+            }
+
+        }
+        main{
+          &.hidden{
+            display: none;
+          }
+          font-family: sans-serif;
+          padding-bottom: 0px;
+            padding: 4vh;
+            color: $text-color;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+            .plots{
+            
+                &.plotHidden{
+                  display: none;
+                }
+                .plot{
+                  width: 100%;
+                }
+              
+            }
+            #nowPrediction{
+                padding: 4vw;
+                border: solid #607D8B;
+                background-color: #efeeeb;
+                
+                @include border-radius(5px);
+                .dateHourResumeCard {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    h1{
+                        color: $skyDark;
+                        font-size:60px;
+                    }
+                    h2{
+                      font-size: 60px;
+                        color: $darkCloudDark;
+                    }
+                  }
+                .subDiv{
+                  display: flex;
+                  flex-direction: row;
+                  justify-content: space-between;
+                  font-size: 26px;
+            
+                  width: 44%;
+                  margin-left: 28%;
+                }
+        
+                }
+                .titleSection{
+                    color: #4e61cd;
+                    margin: 15px 0;
+                    font-style: italic;
+                    font-size: 3vw;
+                    cursor: pointer;
+                    &:hover{
+                      color: #EA7317;
+                    }
+                }
+             
+                #resumecardDisplayer{
+                    padding: 2vw;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-evenly;
+                 &.resumecardDisplayerhidden{
+                  display: none;
+                 }
+                    .resumeCardContainer{
+                        background-color: $cloudLight;
+                        @include border-radius(5px);
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        background-color: #DBE4EE;
+                        justify-content: space-around;
+                        width: 14vw;
+                        height: 22vh;
+                    .tempContainer{
+                        display: flex;
+                    }
+                    .windContainer{
+                        display: flex;
+                    }
+                       
+                        
+                    }
+                }
+        }
+        .tableDiv{
+          font-family: sans-serif;
+          padding: 4vh;
+          padding-top: 0px;
+          display: none;
+        .titleSection{
+          color: #4e61cd;
+          margin: 15px 0;
+          font-style: italic;
+          font-size: 3vw;
+          cursor: pointer;
+          &:hover{
+            color: #EA7317;
+          }
+        }
+        .tableMenuBtns{
+          display: flex;
+    justify-content: space-around;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 3vw;
+
+
+    .tableBtn{
+      border: 3px solid white;
+      padding: 1.7vw;
+      border-radius: 12px;
+      background-color: #23282A;
+      color: rgba(255, 255, 255, 0.8);
+      &:hover{
+      transform: scale(1.1);
+      
+    }
+    }
+        }
+        .tables{
+        
+          .table{
+            display: none;
+         
+            &.visible{display: block;}
+            .data-table {
+            
+              width: 100%;
+              border-collapse: collapse;
+              margin-bottom: 20px;
+              text-align: center;
+            .tabHeaderDate{
+              font-size: 25px;
+            }
+              th, td {
+                padding: 8px;
+             
+                border-bottom: 1px solid #ddd;
+              }
+            
+              th {
+                background-color: #f2f2f2;
+              }}
+      
+      }
+    }
+  
+          }
+
+          }
+         
+          
+        }
+    
+
+

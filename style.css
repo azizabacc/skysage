@@ -1,0 +1,666 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500&display=swap");
+@keyframes sunRotate {
+  from {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(359deg);
+    -moz-transform: rotate(359deg);
+    -ms-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+@keyframes moonSwing {
+  0% {
+    -webkit-transform: rotate(125deg);
+    -moz-transform: rotate(125deg);
+    -ms-transform: rotate(125deg);
+    -o-transform: rotate(125deg);
+    transform: rotate(125deg);
+  }
+  50% {
+    -webkit-transform: rotate(135deg);
+    -moz-transform: rotate(135deg);
+    -ms-transform: rotate(135deg);
+    -o-transform: rotate(135deg);
+    transform: rotate(135deg);
+  }
+  100% {
+    -webkit-transform: rotate(125deg);
+    -moz-transform: rotate(125deg);
+    -ms-transform: rotate(125deg);
+    -o-transform: rotate(125deg);
+    transform: rotate(125deg);
+  }
+}
+@keyframes starFadeIn {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes starFadeOut {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+
+@media screen and (max-width: 800px) {
+  body {
+    background-color: #23282A;
+  }
+  body header {
+    background: -webkit-linear-gradient(#222729, #4b535a);
+    background: -moz-linear-gradient(#222729, #4b535a);
+    background: -ms-linear-gradient(#222729, #4b535a);
+    background: -o-linear-gradient(#222729, #4b535a);
+    background: linear-gradient(#222729, #4b535a);
+    color: hsl(0, 0%, 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 4vw;
+    height: 100vh;
+    justify-content: space-around;
+  }
+  body header .topHeader {
+    display: flex;
+    width: 100vw;
+    justify-content: space-between;
+    align-items: center;
+  }
+  body header .topHeader h1 {
+    font-size: 12vw;
+  }
+  body header .topHeader .logo {
+    width: 100;
+    height: 100;
+  }
+  body header .siteSitation {
+    font-style: italic;
+    text-align: center;
+  }
+  body header #inputContainer {
+    display: flex;
+    align-items: center;
+    width: 70vw;
+    justify-content: space-evenly;
+  }
+  body header #inputContainer #citySelect {
+    font-size: 1rem;
+    padding: 1rem 0.5rem;
+    border-radius: 0.3rem;
+    /* color: var(--text-color); */
+    /* background-color: var(--search-bar-color); */
+    border: none;
+  }
+  body header #inputContainer #submitCity {
+    font-size: 3rem;
+    cursor: pointer;
+  }
+  body header #inputContainer #submitCity:hover {
+    color: #EA7317;
+  }
+  body header #headerData .headerDataInfos {
+    display: flex;
+    width: 100vw;
+    padding: 0vw;
+    justify-content: space-around;
+    height: 16VW;
+    align-items: center;
+    font-size: 22px;
+    font-weight: bold;
+  }
+  body header #headerData .headerDataLogos {
+    width: 100vw;
+    display: flex;
+    justify-content: space-around;
+  }
+  body header #headerData .headerDataLogos .cityIcon .cityImg {
+    width: 32px;
+    border-radius: 18px;
+    margin-top: 9px;
+    margin-left: 5vw;
+  }
+  body header #headerData .headerDataLogos .visibilityIcon .visibilityImg {
+    width: 45px;
+  }
+  body header #headerData .headerDataLogos .sunriseIcon {
+    margin-top: 9px;
+  }
+  body header #headerData .headerDataLogos .sunriseIcon .sun {
+    width: 28px;
+    height: 28px;
+    background: -webkit-linear-gradient(#FEC601, #EA7317);
+    background: -moz-linear-gradient(#FEC601, #EA7317);
+    background: -ms-linear-gradient(#FEC601, #EA7317);
+    background: -o-linear-gradient(#FEC601, #EA7317);
+    background: linear-gradient(#FEC601, #EA7317);
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    -ms-border-radius: 50px;
+    -o-border-radius: 50px;
+    border-radius: 50px;
+    animation: sunRotate 10s infinite linear;
+    -webkit-transform: rotate(20deg);
+    -moz-transform: rotate(20deg);
+    -ms-transform: rotate(20deg);
+    -o-transform: rotate(20deg);
+    transform: rotate(20deg);
+  }
+  body header #headerData .headerDataLogos .sunriseIcon .rays {
+    width: 28px;
+    height: 28px;
+    background: #FEC601;
+    z-index: 0;
+    position: absolute;
+    -webkit-transform: rotate(20deg);
+    -moz-transform: rotate(20deg);
+    -ms-transform: rotate(20deg);
+    -o-transform: rotate(20deg);
+    transform: rotate(20deg);
+    animation: sunRotate 10s infinite linear;
+  }
+  body header #headerData .headerDataLogos .sunriseIcon .rays:after {
+    content: "";
+    width: 28px;
+    height: 28px;
+    background: #FEC601;
+    z-index: 0;
+    position: absolute;
+    -webkit-transform: rotate(40deg);
+    -moz-transform: rotate(40deg);
+    -ms-transform: rotate(40deg);
+    -o-transform: rotate(40deg);
+    transform: rotate(40deg);
+  }
+  body header #headerData .headerDataLogos .sunsetIcon .moon {
+    width: 33px;
+    height: 33px;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    -ms-border-radius: 50px;
+    -o-border-radius: 50px;
+    border-radius: 50px;
+    box-shadow: 10px 3px 0 0 #ECE4B7;
+    -webkit-transform: rotate(130deg);
+    -moz-transform: rotate(130deg);
+    -ms-transform: rotate(130deg);
+    -o-transform: rotate(130deg);
+    transform: rotate(130deg);
+    animation: moonSwing 3s infinite linear;
+  }
+  main {
+    font-family: sans-serif;
+    margin: 1vw;
+  }
+  main.hidden {
+    display: none;
+  }
+  main .plots.plotHidden {
+    display: none;
+  }
+  main #nowPrediction {
+    padding: 2vw;
+    border: solid #607D8B;
+    background-color: #efeeeb;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+  }
+  main #nowPrediction .dateHourResumeCard {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  main #nowPrediction .dateHourResumeCard h1 {
+    color: #222729;
+  }
+  main #nowPrediction .dateHourResumeCard h2 {
+    color: #7792AF;
+  }
+  main #nowPrediction .tempContainerResumeCard {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    font-size: 26px;
+    font-weight: bold;
+  }
+  main #nowPrediction .weatherContainerResumeCard {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    font-size: 26px;
+    font-weight: bold;
+  }
+  main #nowPrediction .windContainerResumeCard {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    font-size: 26px;
+    font-weight: bold;
+  }
+  main .titleSection {
+    color: #4e61cd;
+    margin: 15px 0;
+    font-style: italic;
+    cursor: pointer;
+  }
+  main .titleSection:hover {
+    color: #EA7317;
+  }
+  main #resumecardDisplayer {
+    padding: 2vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 150vw;
+  }
+  main #resumecardDisplayer.resumecardDisplayerhidden {
+    display: none;
+  }
+  main #resumecardDisplayer .resumeCardContainer {
+    background-color: #DBE4EE;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #DBE4EE;
+    justify-content: space-around;
+    height: 11vh;
+  }
+  main #resumecardDisplayer .resumeCardContainer .dateHour {
+    font-size: 20px;
+    font-weight: bold;
+    color: blue;
+  }
+  main #resumecardDisplayer .resumeCardContainer .tempContainer {
+    display: flex;
+    width: 19vw;
+    justify-content: space-between;
+    font-size: 19px;
+  }
+  main #resumecardDisplayer .resumeCardContainer .windContainer {
+    display: flex;
+    width: 19vw;
+    justify-content: space-between;
+    font-size: 19px;
+  }
+  .tableDiv {
+    font-family: sans-serif;
+    padding: 4vh;
+    display: none;
+    padding-top: 0px;
+    padding-left: 0px;
+    margin-left: 1vw;
+  }
+  .tableDiv .titleSection {
+    color: #4e61cd;
+    margin: 15px 0;
+    font-style: italic;
+    cursor: pointer;
+  }
+  .tableDiv .titleSection:hover {
+    color: #EA7317;
+  }
+  .tableDiv .tableMenuBtns {
+    display: flex;
+    font-size: 20px;
+    font-weight: bold;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+  .tableDiv .tableMenuBtns .tableBtn {
+    border: 3px solid white;
+    padding: 1.7vw;
+    border-radius: 12px;
+    background-color: #23282A;
+    color: rgba(255, 255, 255, 0.8);
+    width: 72%;
+    text-align: center;
+  }
+  .tableDiv .tableMenuBtns .tableBtn:hover {
+    transform: scale(1.1);
+  }
+  .tableDiv .tables .table {
+    display: none;
+  }
+  .tableDiv .tables .table.visible {
+    display: block;
+  }
+  .tableDiv .tables .table .data-table {
+    width: 100%;
+    background-color: #DBE4EE;
+    text-align: center;
+    border-collapse: collapse;
+  }
+  .tableDiv .tables .table .data-table th, .tableDiv .tables .table .data-table td {
+    padding: 5px;
+    font-size: 12px;
+  }
+}
+@media screen and (min-width: 800px) {
+  body {
+    background-color: #23282A;
+  }
+  body header {
+    background: -webkit-linear-gradient(#4b535a, #222729);
+    background: -moz-linear-gradient(#4b535a, #222729);
+    background: -ms-linear-gradient(#4b535a, #222729);
+    background: -o-linear-gradient(#4b535a, #222729);
+    background: linear-gradient(#4b535a, #222729);
+    color: hsl(0, 0%, 100%);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: space-around;
+    padding: 2vw;
+  }
+  body header .topHeader {
+    display: flex;
+    width: 100vw;
+    justify-content: space-evenly;
+  }
+  body header .topHeader h1 {
+    font-size: 6rem;
+  }
+  body header .siteSitation {
+    font-style: italic;
+    font-size: larger;
+  }
+  body header #inputContainer {
+    display: flex;
+    align-items: center;
+    width: 47vw;
+    justify-content: center;
+  }
+  body header #inputContainer #citySelect {
+    font-size: 1.4rem;
+    padding: 1rem 2.5rem;
+    border-radius: 0.3rem;
+    margin-right: 1vw;
+    border: none;
+  }
+  body header #inputContainer #submitCity {
+    font-size: 3rem;
+    cursor: pointer;
+  }
+  body header #inputContainer #submitCity:hover {
+    color: #EA7317;
+  }
+  body header #headerData {
+    display: flex;
+    justify-content: space-around;
+    width: 100vw;
+    height: 16vh;
+    /* align-items: center; */
+    flex-direction: column;
+  }
+  body header #headerData .headerDataLogos {
+    width: 100vw;
+    display: flex;
+    margin-left: 28px;
+    justify-content: space-around;
+  }
+  body header #headerData .headerDataLogos .cityIcon .cityImg {
+    width: 32px;
+    border-radius: 18px;
+    margin-top: 9px;
+  }
+  body header #headerData .headerDataLogos .visibilityIcon .visibilityImg {
+    width: 45px;
+    margin-left: 22px;
+  }
+  body header #headerData .headerDataLogos .sunriseIcon {
+    margin-top: 9px;
+  }
+  body header #headerData .headerDataLogos .sunriseIcon .sun {
+    width: 28px;
+    height: 28px;
+    background: -webkit-linear-gradient(#FEC601, #EA7317);
+    background: -moz-linear-gradient(#FEC601, #EA7317);
+    background: -ms-linear-gradient(#FEC601, #EA7317);
+    background: -o-linear-gradient(#FEC601, #EA7317);
+    background: linear-gradient(#FEC601, #EA7317);
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    -ms-border-radius: 50px;
+    -o-border-radius: 50px;
+    border-radius: 50px;
+    animation: sunRotate 10s infinite linear;
+    -webkit-transform: rotate(20deg);
+    -moz-transform: rotate(20deg);
+    -ms-transform: rotate(20deg);
+    -o-transform: rotate(20deg);
+    transform: rotate(20deg);
+  }
+  body header #headerData .headerDataLogos .sunriseIcon .rays {
+    width: 28px;
+    height: 28px;
+    background: #FEC601;
+    z-index: 0;
+    position: absolute;
+    -webkit-transform: rotate(20deg);
+    -moz-transform: rotate(20deg);
+    -ms-transform: rotate(20deg);
+    -o-transform: rotate(20deg);
+    transform: rotate(20deg);
+    animation: sunRotate 10s infinite linear;
+  }
+  body header #headerData .headerDataLogos .sunriseIcon .rays:after {
+    content: "";
+    width: 28px;
+    height: 28px;
+    background: #FEC601;
+    z-index: 0;
+    position: absolute;
+    -webkit-transform: rotate(40deg);
+    -moz-transform: rotate(40deg);
+    -ms-transform: rotate(40deg);
+    -o-transform: rotate(40deg);
+    transform: rotate(40deg);
+  }
+  body header #headerData .headerDataLogos .sunsetIcon {
+    margin-right: 7px;
+  }
+  body header #headerData .headerDataLogos .sunsetIcon .moon {
+    width: 33px;
+    height: 33px;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    -ms-border-radius: 50px;
+    -o-border-radius: 50px;
+    border-radius: 50px;
+    box-shadow: 10px 3px 0 0 #ECE4B7;
+    -webkit-transform: rotate(130deg);
+    -moz-transform: rotate(130deg);
+    -ms-transform: rotate(130deg);
+    -o-transform: rotate(130deg);
+    transform: rotate(130deg);
+    animation: moonSwing 3s infinite linear;
+  }
+  body header #headerData .headerDataInfos {
+    display: flex;
+    width: 100vw;
+    padding: 0vw;
+    height: 16VW;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  body main {
+    font-family: sans-serif;
+    padding-bottom: 0px;
+    padding: 4vh;
+    color: hsl(180, 5%, 19%);
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+  }
+  body main.hidden {
+    display: none;
+  }
+  body main .plots.plotHidden {
+    display: none;
+  }
+  body main .plots .plot {
+    width: 100%;
+  }
+  body main #nowPrediction {
+    padding: 4vw;
+    border: solid #607D8B;
+    background-color: #efeeeb;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+  }
+  body main #nowPrediction .dateHourResumeCard {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  body main #nowPrediction .dateHourResumeCard h1 {
+    color: #222729;
+    font-size: 60px;
+  }
+  body main #nowPrediction .dateHourResumeCard h2 {
+    font-size: 60px;
+    color: #7792AF;
+  }
+  body main #nowPrediction .subDiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 26px;
+    width: 44%;
+    margin-left: 28%;
+  }
+  body main .titleSection {
+    color: #4e61cd;
+    margin: 15px 0;
+    font-style: italic;
+    font-size: 3vw;
+    cursor: pointer;
+  }
+  body main .titleSection:hover {
+    color: #EA7317;
+  }
+  body main #resumecardDisplayer {
+    padding: 2vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+  body main #resumecardDisplayer.resumecardDisplayerhidden {
+    display: none;
+  }
+  body main #resumecardDisplayer .resumeCardContainer {
+    background-color: #DBE4EE;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #DBE4EE;
+    justify-content: space-around;
+    width: 14vw;
+    height: 22vh;
+  }
+  body main #resumecardDisplayer .resumeCardContainer .tempContainer {
+    display: flex;
+  }
+  body main #resumecardDisplayer .resumeCardContainer .windContainer {
+    display: flex;
+  }
+  body .tableDiv {
+    font-family: sans-serif;
+    padding: 4vh;
+    padding-top: 0px;
+    display: none;
+  }
+  body .tableDiv .titleSection {
+    color: #4e61cd;
+    margin: 15px 0;
+    font-style: italic;
+    font-size: 3vw;
+    cursor: pointer;
+  }
+  body .tableDiv .titleSection:hover {
+    color: #EA7317;
+  }
+  body .tableDiv .tableMenuBtns {
+    display: flex;
+    justify-content: space-around;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 3vw;
+  }
+  body .tableDiv .tableMenuBtns .tableBtn {
+    border: 3px solid white;
+    padding: 1.7vw;
+    border-radius: 12px;
+    background-color: #23282A;
+    color: rgba(255, 255, 255, 0.8);
+  }
+  body .tableDiv .tableMenuBtns .tableBtn:hover {
+    transform: scale(1.1);
+  }
+  body .tableDiv .tables .table {
+    display: none;
+  }
+  body .tableDiv .tables .table.visible {
+    display: block;
+  }
+  body .tableDiv .tables .table .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  body .tableDiv .tables .table .data-table .tabHeaderDate {
+    font-size: 25px;
+  }
+  body .tableDiv .tables .table .data-table th, body .tableDiv .tables .table .data-table td {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+  }
+  body .tableDiv .tables .table .data-table th {
+    background-color: #f2f2f2;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */

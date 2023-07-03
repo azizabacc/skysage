@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkySage</title>
+    
+
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-bold-rounded/css/uicons-bold-rounded.css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+
+
+</head>
+<body  >
+    <header>
+<div class="topHeader">
+
+        <canvas class="logo" width="100" height="100"></canvas>
+
+   
+        <h1>SkySage</h1>
+    
+    <canvas class="logo" width="100" height="100"></canvas>
+</div>
+<p class="siteSitation">"Where the sky meets wisdom, SkySage unveils the secrets of the weather."</p>
+
+<div id="inputContainer" >
+    
+    <input type="text" id="citySelect" placeholder="City Name">
+    <i id="submitCity" class="fa-solid fa-magnifying-glass searchBar-icon"></i>
+</div>
+
+
+
+    </header>
+    <main class="hidden">
+      
+    </main>
+    <div class="tableDiv">
+        <h2 class="titleSection">3 Hours Forcasts Tables Over 5 Days</h2>
+        <div class="tableMenuBtns">
+            <div class="tableBtn" id="mixteTableBtn">Temperature  Wind  Climat</div>
+            <div class="tableBtn" id="windTableBtn">Wind Degree Speed Gust</div>
+            <div class="tableBtn" id="depressionTableBtn">Precipitation Humidity Pressure</div>
+        </div>
+        <div class="tables">
+            <div class="table " id="tab1"></div>
+            <div class="table " id="tab2"></div>
+            <div class="table " id="tab3"></div>
+        </div>
+       
+    </div>
+    <script type=’text/javascript’ src='config.js'></script>
+<script type="module" src="logo.js"></script>
+<script type="module" src="script.js"></script> 
+
+</body>
+</html>

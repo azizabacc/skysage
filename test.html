@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Exemple Brython</title>
+    <script src="brython.js"></script>
+  </head>
+  <body onload="brython()">
+    <h1>Exemple Brython</h1>
+    <p>Premier paragraphe.</p>
+    <p>Deuxième paragraphe.</p>
+    <button id="mon-bouton">Cliquez-moi !</button>
+    <script type="text/python">
+      # Écrivez votre code Python ici
+      from browser import document
+      
+      def callback(event):
+          nouveau_paragraphe = document.createElement("p")
+          nouveau_paragraphe.text = "Nouveau paragraphe ajouté !"
+          document.body.appendChild(nouveau_paragraphe)
+          
+      document["mon-bouton"].bind("click", callback)
+    </script>
+  </body>
+</html>
