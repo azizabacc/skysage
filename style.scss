@@ -7,6 +7,8 @@ $body-font: "Roboto", sans-serif;
 // ==== Colors ====
 $skyLight: #4b535a;
 $skyDark: #222729;
+$backgroud :#070703;
+$secBackgroud : #1e1e1e;
 
 
 $text-color: hsl(180, 5%, 19%); // Couleur principale de texte
@@ -67,7 +69,12 @@ $nightDark: #BFADA3;
       @include rotate(359deg);
     }
   }
-
+  @mixin flexDisplay($flex-direction,$justify-content,$align-items){
+    display: flex;
+    flex-direction: $flex-direction;
+    justify-content: $justify-content;
+    align-items: $align-items;
+  }
 
   @keyframes moonSwing {
     0% {
@@ -107,31 +114,73 @@ $nightDark: #BFADA3;
     padding: 0;
 
 }
-
+body{ background-color: $backgroud;
+header{
+  @include flexDisplay(column, space-around, center);
+  color: $text-color-light;
+  height: 100vh;
+  padding: 2vw;
+  #inputContainer{
+    @include flexDisplay(row-reverse, space-evenly, center);
+    width: 80vw;
+    background-color: #1e1e1e;
+    @include border-radius(40px);
+  
+    padding: 1vw;
+  
+    &:hover{
+      color: #51519e;
+    }
+      #citySelect{
+        color: #efefe1;
+          font-size: 2rem;
+          border :none;
+        background-color: $secBackgroud;
+          width: 84%;
+          &:focus{  
+            outline: none !important;
+       
+           }
+      }
+      #submitCity{
+        font-size: 1.5rem;
+        cursor: pointer;
      
+      }
+  
+  }
+  .topHeader{
+    @include flexDisplay(row, space-between, center);
+
+      width: 100vw;
+  }
+ 
+}
+main {
+  #resumecardDisplayer3hours{
+    display: flex; /* [1] */
+    flex-wrap: nowrap; /* [1] */
+    overflow-x: auto; /* [2] */
+    -webkit-overflow-scrolling: touch; /* [3] */
+    overflow-y: hidden;
+    -ms-overflow-style: -ms-autohiding-scrollbar; /* [4] */
+    background-color: $secBackgroud;
+    color: white;
+&::-webkit-scrollbar {
+  display: none; }
+    .resumeCardContainer{
+      display: inline-block;
+    } 
+  }
+}
+}
 
 @media screen and (max-width: 800px) {
 
       
 body{
-  background-color: #23282A;
-
-    header{
-        @include background(#222729,#4b535a);
-        color: hsl(0, 0%, 100%);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 4vw;
-        height: 100vh;
-        justify-content: space-around;
-
-
+    header{      
         .topHeader{
-            display: flex;
-            width: 100vw;
-            justify-content: space-between;
-            align-items: center;
             h1{
                 font-size: 12vw;
             }
@@ -144,29 +193,7 @@ body{
             font-style: italic;
             text-align: center;
         }
-        #inputContainer{
-            display: flex;
-            align-items: center;
-            width: 70vw;
-            justify-content: space-evenly;
-         
-            #citySelect{
-                font-size: 1rem;
-                padding: 1rem 0.5rem;
-                border-radius: 0.3rem;
-                /* color: var(--text-color); */
-                /* background-color: var(--search-bar-color); */
-                border: none;
-            }
-            #submitCity{
-              font-size: 3rem;
-              cursor: pointer;
-              &:hover{
-                color: #EA7317;
-              }
-            }
 
-        }
   
         #headerData{
             .headerDataInfos{
@@ -442,53 +469,26 @@ body{
 
 @media screen and (min-width: 800px) {
     body{
-      background-color: #23282A;
         header{
-            @include background($skyLight, $skyDark);    
-            color: $text-color-light;
-            display: flex;
-            align-items: center;
-            flex-direction: column;
-            height: 100vh;
-            justify-content: space-around;
-            padding: 2vw;
             .topHeader{
-                display: flex;
-                width: 100vw;
-            
-                justify-content: space-evenly;
                     h1{
                         font-size: 6rem;
                     }
-                
             }
             .siteSitation{
               font-style: italic;
               font-size: larger;
             }
             #inputContainer{
-                display: flex;
-      
-                align-items: center;
-                width: 47vw;
-                justify-content: center;
-    #citySelect{
-        font-size: 1.4rem;
-        padding: 1rem 2.5rem;
-        border-radius: 0.3rem;
-        margin-right: 1vw;
-        border: none;
+              #citySelect{
 
-    }
-  #submitCity{
-    font-size: 3rem;
-    cursor: pointer;
-    &:hover{
-      color: #EA7317;
-    }
-  }
+                width:94%;
+              }
+  
+            }   
+         
           
-            }
+            
             #headerData{
               display: flex;
               justify-content: space-around;

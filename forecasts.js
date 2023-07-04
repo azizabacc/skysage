@@ -3,8 +3,7 @@ import { timestampConvertor , meanTemperature,removeChild,infoPerDay} from './fu
 import { coordData,resumeDayCard,resumeCard ,tagInfoday,windTab, depressionTab} from './tags.js';
 import { plot, plotErrorBar } from './plots.js';
 import { config } from './config.js';
-/* 
-const apiKey ="0ecda526c9c0b753226bce63f940887d" */
+
 const apiKey = config.MY_KEY;
 let main = document.querySelector('main');
 let header = document.querySelector('header');
@@ -90,6 +89,8 @@ fetch(forecastApi)
 
     //main.prepend(nowPrediction)
     for(let i=0; i<data.cnt; i++){   
+        resumecardDisplayer3hours.append(resumeCard(data.list[i].dt_txt,data.list[i].main.temp,data.list[i].weather[0].description,data.list[i].wind.speed));
+
         xdateHour.push(data.list[i].dt_txt);
         ytemp.push(data.list[i].main.temp);
         errorTemp.push(data.list[i].main.temp_max-data.list[i].main.temp_min)

@@ -110,9 +110,15 @@ depressionTableBtn.addEventListener('click', ()=>{
   showTab(tab3,tab1,tab2);
 
 }) 
-  
+
+let dayResumeContainer = document.createElement('div');
+dayResumeContainer.id="dayResumeContainer";
+dayResumeContainer.append(resumecardDisplayer);
+dayResumeContainer.append(resumecardDisplayer3hours)
+/* main.append(resumecardDisplayer)
+main.append(resumecardDisplayer3hours) */
+main.append(dayResumeContainer);
 main.append(titleAverage)
-main.append(resumecardDisplayer)
 main.append(titleplots)
 plots.append(tempPlot)
 plots.append(windPlot)
