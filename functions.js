@@ -15,6 +15,16 @@ export const timestampConvertor = (timestamp) =>{
     return time  
   
     }
+    export const convertTimeStamp = (timeStamp) => {
+      let date = new Date(timeStamp * 1000);
+      return date.toLocaleDateString("en-US", {
+        month: "long",
+        weekday: "long",
+        year: "numeric",
+        day: "numeric",
+      });
+    };
+    
 
     export const getDayName=(dateString)=> {
         const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];

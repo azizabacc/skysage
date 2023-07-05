@@ -38,9 +38,32 @@
 
 
     </header>
+    <h1 id="dayTitle" class ='title'></h1>
     <main class="hidden">
-      
+        <div id='main1'class="hidden"></div>
+        <div id='main2'class="hidden">
+            <h1 id="titleMain2" class ='title'>Forcasts</h1>
+        </div>
+        <div id='main3'class="hidden">
+            <div id="main3Header">
+                <h1 class="title">Overview </h1>
+                <div class="btnDiv">
+                    <p id='tempPlotBtn' class="plotbtn">Temperature</p>
+                    <p id='rainPlotBtn' class="plotbtn">Rainfall</p>
+                    <p id='humidityPlotBtn' class="plotbtn">Humidity</p>
+                </div>
+    
+            </div>
+            <div id="plots">
+                <div id='tempPlot' class="plot"></div>
+                <div id='windPlot' class="plot"></div>
+                <div id='humidityPlot' class="plot"></div>
+                <div id='pressurePlot' class="plot"></div>
+            </div>
+        </div>
     </main>
+
+
     <div class="tableDiv">
         <h2 class="titleSection" id="titleTables">3 Hours Forcasts Tables Over 5 Days</h2>
         <div class="btnHidden" id="tableMenuBtns">
@@ -48,6 +71,7 @@
             <div class="tableBtn" id="windTableBtn">Wind Degree Speed Gust</div>
             <div class="tableBtn" id="depressionTableBtn">Precipitation Humidity Pressure</div>
         </div>
+  
         <div class="tables">
             <div class="table " id="tab1"></div>
             <div class="table " id="tab2"></div>

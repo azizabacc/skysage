@@ -10,28 +10,29 @@ let averageTempByDay={}
 let averageWindSpeedByDay={}
 const citySelect = document.getElementById("citySelect"); 
 const citySbmitBtn = document.getElementById('submitCity');
-const main = document.querySelector('main');
+const main1 = document.getElementById('main1')
 const header = document.querySelector('header');
-
-const resumecardDisplayer = divClassId("resumecardDisplayer resumecardDisplayerhidden","resumecardDisplayer")
+let main2 = document.getElementById('main2')
+let main3  = document.getElementById('main3')
+const resumecardDisplayer = divClassId("resumecardDisplayer","resumecardDisplayer")
 const resumecardDisplayer3hours = divClassId("resumecardDisplayer","resumecardDisplayer3hours");
 
 
 const plots = document.createElement('div');
 plots.className ="plots plotHidden";
 
-const tempPlot = divClassId('plot',"tempPlot")
-const windPlot = divClassId('plot',"windPlot")
-const humidityPlot = divClassId('plot',"humidityPlot")
-const pressurePlot = divClassId('plot',"pressurePlot")
+const tempPlot = document.getElementById('tempPlot');
+const windPlot = document.getElementById('windPlot');
+const humidityPlot = document.getElementById('humidityPlot');
+const pressurePlot = document.getElementById('pressurePlot');
 
 
 //title sections
 //title forcast per day
-let titleAverage = title('5 Days Extended Forecast ')
+//let titleAverage = title('5 Days Extended Forecast ')
 
 //title forcast graph
-let titleplots = title('Forcasts Graphics Over 5 Days ')
+//let titleplots = title('Forcasts Graphics Over 5 Days ')
 
 let tableDiv = document.querySelector(".tableDiv");
 const searchEvent = () =>{
@@ -40,7 +41,7 @@ const searchEvent = () =>{
     fetch(geoApi)
     .then(response => response.json())
     .then(data=> {
-     
+     console.log(data);
         citySelect.innerText="";
         tableDiv.style.display='block';
         tableDiv.children[1].display='flex';
@@ -48,10 +49,10 @@ const searchEvent = () =>{
         let lon = Object.values(data[0])[3];
         document.body.style.display='block';
         header.style.height= "50vh"
-        main.classList.remove("hidden")
+        //main1.classList.remove("hidden")
         forecast(lat,lon,averageTempByDay,averageWindSpeedByDay,resumecardDisplayer);
-        titleAverage.style.display='block';
-        titleplots.style.display='block';
+     /*    titleAverage.style.display='block'; */
+        //titleplots.style.display='block';
         
         forecast3hours(lat,lon,resumecardDisplayer3hours);
        
@@ -71,15 +72,8 @@ citySelect.addEventListener("keypress", function(event) {
   });
 
 
-//title to show 5 days forcasts
 
-titleAverage.addEventListener('click', ()=>{
-  resumecardDisplayer.classList.toggle('resumecardDisplayerhidden');
-}) 
-//tile to show plots
-titleplots.addEventListener('click',()=>{
-  plots.classList.toggle("plotHidden");
-})
+
 //tile to show menu btns for tabs
 let titleTables = document.getElementById('titleTables');
 let tableMenuBtns = document.getElementById('tableMenuBtns');
@@ -113,18 +107,22 @@ depressionTableBtn.addEventListener('click', ()=>{
 
 let dayResumeContainer = document.createElement('div');
 dayResumeContainer.id="dayResumeContainer";
-dayResumeContainer.append(resumecardDisplayer);
+
 dayResumeContainer.append(resumecardDisplayer3hours)
 /* main.append(resumecardDisplayer)
 main.append(resumecardDisplayer3hours) */
-main.append(dayResumeContainer);
-main.append(titleAverage)
-main.append(titleplots)
+main1.append(dayResumeContainer);
+/* let dayContainer = document.querySelector(".dayContainer")
+dayContainer.append(dayResumeContainer); */
+
+
+main2.append(resumecardDisplayer);
 plots.append(tempPlot)
 plots.append(windPlot)
 plots.append(humidityPlot)
 plots.append(pressurePlot)
-main.append(plots)
+main3.append(plots)
+
 
 
 

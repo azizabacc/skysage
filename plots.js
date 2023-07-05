@@ -14,20 +14,35 @@ export const plot = (dataX,dataY,div,color,tit,xtit,ytit) =>{
   }
 };
     var layout = { 
-        title: tit,
+      paper_bgcolor: "#1e1e1e",
+      plot_bgcolor : '#1e1e1e',
+      title: {
+        text: tit,
+        font: {
+          family: 'Arial, sans-serif',
+          size: 18,
+          color: 'white' // Modifier la couleur du titre ici
+        }
+      },
         xaxis: {
             title: xtit,
             titlefont: {
               family: 'Arial, sans-serif',
               size: 18,
-              color: 'black'
+              color: 'white'
+            },
+            tickfont: {
+              color: 'white' 
             }},
             yaxis: {
                 title: ytit,
                 titlefont: {
                   family: 'Arial, sans-serif',
                   size: 18,
-                  color: 'black'
+                  color: 'white'
+                },
+                tickfont: {
+                  color: 'white' 
                 }}
 
       } 
@@ -36,12 +51,13 @@ var config = {responsive: true}
    Plotly.newPlot(div, data,layout,config,{scrollZoom: true},{editable: true});
 }
 
-export const plotErrorBar = (dataX,dataY,dataError,div,tit,xtit,ytit) =>{
+export const plotErrorBar = (dataX, dataY, dataError, div, tit, xtit, ytit) => {
   var data = [
     {
       x: dataX,
       y: dataY,
       mode: 'line',
+      
       error_y: {
         type: 'data',
         array: dataError,
@@ -49,27 +65,49 @@ export const plotErrorBar = (dataX,dataY,dataError,div,tit,xtit,ytit) =>{
         color: 'red',
         thickness: 2.5
       },
+      line: {  
+        color: 'white'  
+      },
       type: 'scatter'
     }
   ];
-  var layout = { 
-    title: tit,
+  
+  var layout = {
+    paper_bgcolor: "#1e1e1e",
+    plot_bgcolor : '#1e1e1e',
+    title: {
+      text: tit,
+      font: {
+        family: 'Arial, sans-serif',
+        size: 18,
+        color: 'white' 
+      }
+    },
     xaxis: {
-        title: xtit,
-        titlefont: {
-          family: 'Arial, sans-serif',
-          size: 18,
-          color: 'black'
-        }},
-        yaxis: {
-            title: ytit,
-            titlefont: {
-              family: 'Arial, sans-serif',
-              size: 18,
-              color: 'black'
-            }}
+      title: xtit,
+      titlefont: {
+        family: 'Arial, sans-serif',
+        size: 18,
+        color: 'white'
+      },
+      tickfont: {
+        color: 'white' 
+      }
+    },
+    yaxis: {
+      title: ytit,
+      titlefont: {
+        family: 'Arial, sans-serif',
+        size: 18,
+        color: 'white'
+      },
+      tickfont: {
+        color: 'white' 
+      }
+    }
+  };
 
-  } 
-  var config = {responsive: true}
-  Plotly.newPlot(div, data,config,layout,{scrollZoom: true},{editable: true});
-}
+  var config = { responsive: true };
+
+  Plotly.newPlot(div, data, layout, config, { scrollZoom: true, editable: true });
+};

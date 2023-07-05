@@ -60,6 +60,14 @@ $nightDark: #BFADA3;
     -o-animation: fadein $seconds;
     animation: fadein $seconds;
   }
+  %section {
+    font-family: sans-serif;
+    padding: 4vh;
+    margin: 2VW;
+    border-radius: 50px;
+    background-color: $secBackgroud;
+    border: solid 1px #32323d
+  }
   
  @keyframes sunRotate {
     from {
@@ -115,6 +123,7 @@ $nightDark: #BFADA3;
 
 }
 body{ background-color: $backgroud;
+  color: white;
 header{
   @include flexDisplay(column, space-around, center);
   color: $text-color-light;
@@ -123,7 +132,7 @@ header{
   #inputContainer{
     @include flexDisplay(row-reverse, space-evenly, center);
     width: 80vw;
-    background-color: #1e1e1e;
+    background-color: $secBackgroud;
     @include border-radius(40px);
   
     padding: 1vw;
@@ -156,26 +165,130 @@ header{
   }
  
 }
-main {
-  #resumecardDisplayer3hours{
-    display: flex; /* [1] */
-    flex-wrap: nowrap; /* [1] */
-    overflow-x: auto; /* [2] */
-    -webkit-overflow-scrolling: touch; /* [3] */
-    overflow-y: hidden;
-    -ms-overflow-style: -ms-autohiding-scrollbar; /* [4] */
-    background-color: $secBackgroud;
-    color: white;
-&::-webkit-scrollbar {
-  display: none; }
-    .resumeCardContainer{
-      display: inline-block;
-    } 
+#dayTitle{
+  font-family: sans-serif;
+  padding: 4vh;
+  margin: 2VW;
+
+}
+main{
+  display: grid;
+  grid-template-areas:
+    'main1 main2 '
+    'main3 main3 ';
+    gap: 10px;
+  
+    padding: 10px;
+  #main1 {
+    grid-area:'main1'; 
+    @extend %section;
+  #nowPrediction {
+   
+  
+      width: 100%;
+      @include flexDisplay(row, space-around, flex-start);
+      .resumeCardSubDiv{
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        margin-top: 50px;
+        
+        font-weight: bold;
+        img{
+          width: 18vw;
+        }
+  
+    
+    }
+  }
+    #resumecardDisplayer3hours{
+      color : black;
+      display: flex; /* [1] */
+      flex-wrap: nowrap; /* [1] */
+      overflow-x: auto; /* [2] */
+      -webkit-overflow-scrolling: touch; /* [3] */
+      overflow-y: hidden;
+      -ms-overflow-style: -ms-autohiding-scrollbar; /* [4] */
+      justify-content:  center;
+    
+  &::-webkit-scrollbar {
+    display: none; }
+      .resumeCardContainer{
+        border-radius: 40px;
+        background-color: #cce9eb;
+        @include flexDisplay(column,center,center);
+        @include border-radius(20px);
+        margin :10px;
+     
+    
+  
+      } 
+    }
+  }
+  #main2{
+    grid-area:'main2'; 
+    @extend %section;
+  
+    #resumecardDisplayer{
+      color : black;
+      display: flex; /* [1] */
+      flex-wrap: nowrap; /* [1] */
+      overflow-x: auto; /* [2] */
+      -webkit-overflow-scrolling: touch; /* [3] */
+      overflow-y: hidden;
+      -ms-overflow-style: -ms-autohiding-scrollbar; /* [4] */
+      justify-content:  center;
+    
+  &::-webkit-scrollbar {
+    display: none; }
+      .resumeCardContainer{
+        border-radius: 40px;
+        background-color: #cce9eb;
+        @include flexDisplay(column,center,center);
+        @include border-radius(20px);
+        margin :10px;
+        width: 40vw;
+    
+  
+      } 
+    }
+  }
+  #main3{
+    grid-area:'main3'; 
+    @extend %section;
+    #main3Header{
+      @include flexDisplay(row, space-between, center);
+  
+      .title{
+  
+      }
+      .btnDiv{
+        display: flex;
+        justify-content: flex-end;
+        background-color: $secBackgroud;
+        @include border-radius(40px);
+      padding: 0.5vw;
+      width: fit-content;
+   color:#cce9eb;
+        .plotbtn{
+          padding: 1vw;
+          &:hover{
+            @include border-radius(40px);
+            background-color: #cce9eb;
+            color: black;
+            cursor: pointer;
+          }
+        
+        }
+      }
+    }
   }
 }
+
 }
 
-@media screen and (max-width: 800px) {
+/* @media screen and (max-width: 800px) {
 
       
 body{
@@ -195,94 +308,6 @@ body{
         }
 
   
-        #headerData{
-            .headerDataInfos{
-              display: flex;
-              width: 100vw;
-              padding: 0vw;
-              justify-content: space-around;
-              height: 16VW;
-              align-items: center;
-              font-size: 22px;
-              font-weight: bold;
-            }
-            .headerDataLogos{
-                width: 100vw;
-                display: flex;
-                justify-content: space-around;
-                .cityIcon{
-                  .cityImg{
-                    width: 32px;
-                    border-radius: 18px;
-                    margin-top: 9px;
-                    margin-left: 5vw;
-                  }
-                }
-                .visibilityIcon{
-                  .visibilityImg{
-                    width: 45px;
-                  }
-                }
-                .sunriseIcon{
-                    margin-top: 9px;
-                    
-
-                    .sun{    
-                        width: 28px;
-                        height: 28px;
-                    
-                        
-                        @include background($sunLight, $sunDark) ;
-                        @include border-radius(50px) ;
-                        animation: sunRotate 10s infinite linear;
-                        @include rotate(20deg);
-
-                    }
-                    .rays {
-                        width: 28px;
-                        height: 28px;
-                        background: $sunLight;
-                        z-index: 0;
-                        position: absolute;
-
-                        @include rotate(20deg);
-                        animation: sunRotate 10s infinite linear;
-                      }
-                      .rays:after {
-                        content: "";
-                        width: 28px;
-                        height: 28px;
-                        background: $sunLight;
-                        z-index: 0;
-                        position: absolute;
-                        @include rotate(40deg);
-                      }
-                
-            }
-            .sunsetIcon{
-
-          .moon {
-            width: 33px;
-            height: 33px;
-            
-            @include border-radius(50px);
-        
-            box-shadow: 10px 3px 0 0 #ECE4B7;
-            @include rotate(130deg);
-            animation: moonSwing 3s infinite linear;
-            
-          }
-
-          
-        
-
-            }
-            }
-         
-            
-        
-         
-            }
 
 
                 
@@ -309,44 +334,11 @@ body{
         }
         #nowPrediction{
             padding: 2vw;
-            border: solid #607D8B;
-            background-color: #efeeeb;
-            @include border-radius(5px);
-            .dateHourResumeCard {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                h1{
-                    color: $skyDark
-                }
-                h2{
-                    color: $darkCloudDark;
-                }
-              }
-            .tempContainerResumeCard{
-                display: flex;
-                flex-direction: row;
-                justify-content: flex-end;
-                font-size: 26px;
-                font-weight: bold;
-            }
-            .weatherContainerResumeCard{
-                display: flex;
-                flex-direction: row;
-                justify-content: flex-end;
-                font-size: 26px;
-                font-weight: bold;
+      
+     
 
             }
-            .windContainerResumeCard{
-                display: flex;
-                flex-direction: row;
-                justify-content: flex-end;
-                font-size: 26px;
-                font-weight: bold;
 
-            }
-            }
             .titleSection{
                 color: #4e61cd;
                 margin: 15px 0;
@@ -358,47 +350,7 @@ body{
             }
          
 
-        #resumecardDisplayer{
-            padding: 2vw;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-evenly;
-            height: 150vw;
-            &.resumecardDisplayerhidden{
-              display: none;
-             }
-            .resumeCardContainer{
-                background-color: $cloudLight;
-                @include border-radius(5px);
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                background-color: #DBE4EE;
-                justify-content: space-around;
-                height: 11vh;
-                .dateHour{
-                    font-size: 20px;
-                    font-weight: bold;
-                    color: blue;
-                }
-            .tempContainer{
-                display: flex;
-                width: 19vw;
-              
-                justify-content: space-between;
-                font-size: 19px;
-            }
-            .windContainer{
-                display: flex;
-                width: 19vw;
-              
-                justify-content: space-between;
-                font-size: 19px;
-            }
-               
-                
-            }
-        }
+        
     }
         .tableDiv{
           font-family: sans-serif;
@@ -489,116 +441,14 @@ body{
          
           
             
-            #headerData{
-              display: flex;
-              justify-content: space-around;
-              width: 100vw;
-              height: 16vh;
-              /* align-items: center; */
-              flex-direction: column;
-   
-            
-            .headerDataLogos{
-              width: 100vw;
-              display: flex;
-              margin-left: 28px;
-              justify-content: space-around;
-              .cityIcon{
-                .cityImg{
-                  width: 32px;
-                  border-radius: 18px;
-                  margin-top: 9px;
-                
-                }
-              }
-                .visibilityIcon{
-                  .visibilityImg{
-                    
-                    width: 45px;
-                    margin-left: 22px;
-                  }
-                }
-                .sunriseIcon{
-                    margin-top: 9px;
 
-                    .sun{    
-                        width: 28px;
-                        height: 28px;
-                    
-                        
-                        @include background($sunLight, $sunDark) ;
-                        @include border-radius(50px) ;
-                        animation: sunRotate 10s infinite linear;
-                        @include rotate(20deg);
-
-                    }
-                    .rays {
-                        width: 28px;
-                        height: 28px;
-                        background: $sunLight;
-                        z-index: 0;
-                        position: absolute;
-
-                        @include rotate(20deg);
-                        animation: sunRotate 10s infinite linear;
-                      }
-                      .rays:after {
-                        content: "";
-                        width: 28px;
-                        height: 28px;
-                        background: $sunLight;
-                        z-index: 0;
-                        position: absolute;
-                        @include rotate(40deg);
-                      }
-                
-            }
-            .sunsetIcon{
-              margin-right: 7px;
-          .moon {
-            width: 33px;
-            height: 33px;
-            
-            @include border-radius(50px);
-        
-            box-shadow: 10px 3px 0 0 #ECE4B7;
-            @include rotate(130deg);
-            animation: moonSwing 3s infinite linear;
-            
-          }
-
-          
-        
-
-            }
-            }
-         
-            .headerDataInfos{
-              display: flex;
-              width: 100vw;
-              padding: 0vw;
-              height: 16VW;
-              align-items: center;
-              justify-content: space-around;
-              font-size: 20px;
-              font-weight: bold;
-            }
-        
-         
-            }
 
         }
         main{
           &.hidden{
             display: none;
           }
-         
-          font-family: sans-serif;
-          
-          padding: 4vh;
-          padding-bottom: 0px;
-          color: hsl(180, 5%, 19%);
-        
+       
        
       
             .plots{
@@ -614,73 +464,14 @@ body{
             }
             #nowPrediction{
                 padding: 4vw;
-                border: solid #607D8B;
-                background-color: #efeeeb;
+      
                 
-                @include border-radius(40px);
-                .dateHourResumeCard {
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
-                    h1{
-                        color: $skyDark;
-                        font-size:60px;
-                    }
-                    h2{
-                      font-size: 60px;
-                        color: $darkCloudDark;
-                    }
-                  }
-                .subDiv{
-                  display: flex;
-                  flex-direction: row;
-                  justify-content: space-between;
-                  font-size: 26px;
             
-                  width: 44%;
-                  margin-left: 28%;
+    
                 }
-        
-                }
-                .titleSection{
-                    color: #4e61cd;
-                    margin: 15px 0;
-                    font-style: italic;
-                    font-size: 3vw;
-                    cursor: pointer;
-                    &:hover{
-                      color: #EA7317;
-                    }
-                }
+            
              
-                #resumecardDisplayer{
-                    padding: 2vw;
-                    display: flex;
-                    flex-direction: row;
-                    justify-content: space-evenly;
-                 &.resumecardDisplayerhidden{
-                  display: none;
-                 }
-                    .resumeCardContainer{
-                        background-color: $cloudLight;
-                        @include border-radius(5px);
-                        display: flex;
-                        flex-direction: column;
-                        align-items: center;
-                        background-color: #DBE4EE;
-                        justify-content: space-around;
-                        width: 14vw;
-                        height: 22vh;
-                    .tempContainer{
-                        display: flex;
-                    }
-                    .windContainer{
-                        display: flex;
-                    }
-                       
-                        
-                    }
-                }
+                
         }
         .tableDiv{
           font-family: sans-serif;
@@ -758,3 +549,4 @@ body{
     
 
 
+ */

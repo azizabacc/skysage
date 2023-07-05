@@ -1,67 +1,130 @@
 import {  weatherFont, windFont, temperatureFont ,getDayName,infoPerDay,windInfos ,precipitation} from './functions.js';
 import { sunLogo ,moonLogo} from './logo.js';
 
-export const resumeCard = (dt_txt,temp,weather,windNb) =>{
-    let resumeCardContainer = document.createElement('div')
-    resumeCardContainer.className="resumeCardContainer";
+export const resumeCard = (dt_txt,temp,weather,windNb,parent) =>{
+  
 
     let dateHour = document.createElement('div')
-    dateHour.className = "dateHourResumeCard ";
-    let day =  document.createElement('h1');
-    let hour =document.createElement('h2');
+    dateHour.className = "resumeCardSubDiv";
+    let day =  document.createElement('h2');
+    let hour =document.createElement('h1');
     day.innerText= getDayName(dt_txt.slice(5,10));
     hour.innerText=dt_txt.slice(10,16);
-    dateHour.append(day);
     dateHour.append(hour);
+    dateHour.append(day);
+
 
     let tempContainer = document.createElement('div')
-tempContainer.className = "tempContainerResumeCard subDiv"
-    let temperature = document.createElement('div')
+tempContainer.className= "resumeCardSubDiv"
+    let temperature = document.createElement('h1')
     temperature.textContent=temp.toString()+' °C';
     let tempFont = document.createElement('div')
     tempFont.innerHTML=temperatureFont(temp);
     tempContainer.append(temperature);
     tempContainer.append(tempFont);
+ 
+   
 
     let weatherContainer = document.createElement('div');
-    weatherContainer.className="weatherContainerResumeCard subDiv";
-    let weatherDesc = document.createElement('div');
-    weatherDesc.textContent = weather;
-    let weathFont = document.createElement('div');
-    weathFont.innerHTML= weatherFont(weather);
-    weatherContainer.append(weatherDesc);
+    weatherContainer.className= "resumeCardSubDiv"
+    let weatherDesc = document.createElement('h2');
+    weatherDesc.textContent = weather.description;
+    let weathFont = document.createElement('img');
+    weathFont.src = "https://openweathermap.org/img/wn/" + weather.icon +"@2x.png";
     weatherContainer.append(weathFont);
+  /*   weatherContainer.append(weatherDesc); */
+
 
     let windContainer =  document.createElement('div');
-    windContainer.className ="windContainerResumeCard subDiv"
-    let windDesc =  document.createElement('div');
+    windContainer.className = "resumeCardSubDiv"
+    let windDesc =  document.createElement('h1');
     windDesc.textContent=windNb.toString();
     let winFont =  document.createElement('div');
     winFont.innerHTML=windFont(windNb);
     windContainer.append(windDesc);
     windContainer.append(winFont);
+   
+ 
+    parent.append(weatherContainer)
+    parent.append(dateHour);
+    parent.append(tempContainer);
 
-    resumeCardContainer.append(dateHour);
-    resumeCardContainer.append(tempContainer);
-    resumeCardContainer.append(weatherContainer);
-    resumeCardContainer.append(windContainer);
+    parent.append(windContainer);
+
+
+
+
+
+
+}
+export const resumeCardScroll = (dt_txt,temp,weather,className) =>{
+  let resumeCardContainer = document.createElement('div')
+  resumeCardContainer.className=className;
+
+  let hour = document.createElement('p')
+  hour.innerText=dt_txt.slice(10,16);
+
+  let weathFont = document.createElement('img');
+  weathFont.src = "https://openweathermap.org/img/wn/" + weather.icon +"@2x.png";
+
+  let temperature  = document.createElement('h3')
+  temperature.textContent=temp.toString()+' °C';
+
+ 
+
+
+
+
+ 
+
+  resumeCardContainer.append(hour)
+  resumeCardContainer.append(weathFont);
+  resumeCardContainer.append(temperature);
+
+
 
 return resumeCardContainer;
 
 
 
 }
+
+export const resumeCardDay = (data,cityName,countryName) =>{
+  let icon = document.createElement('img');
+  icon.className='weatherIcon';
+  icon.src =  "https://openweathermap.org/img/wn/" +
+  data.list[0].weather[0].icon +
+  "@2x.png"
+  let cityDiv =document.createElement('div');
+  let cityname = document.createElement('p');
+  cityname.innerText = cityName;
+  cityname.className="bigSize"
+  let countryname =document.createElement('p');
+  countryname.innerText = countryName;
+  countryname.className = "smallSize"
+  
+  cityDiv.append(cityname);
+  cityDiv.append(countryname);
+
+  let tempDiv =document.createElement('div');
+  let tempValue =  document.createElement('p');
+  tempValue.textContent =
+  tempValue.className="bigSize";
+  let tempTitle =document.createElement('p');
+  tempTitle.className = "smallSize";
+}
+
 export const resumeDayCard = (dt_txt,temp,windNb) =>{
     let resumeCardContainer = document.createElement('div')
     resumeCardContainer.className="resumeCardContainer";
 
-    let dateHour = document.createElement('div')
+    let dateHour = document.createElement('h3')
     dateHour.innerHTML=getDayName(dt_txt);
     dateHour.className = "dateHour";
 
     let tempContainer = document.createElement('div')
     tempContainer.className ="tempContainer";
-    let temperature = document.createElement('div')
+    let temperature = document.createElement('h3')
     temperature.textContent=temp.toString()+' °C';
     let tempFont = document.createElement('div')
     tempFont.innerHTML=temperatureFont(temp);
