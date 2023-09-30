@@ -3,8 +3,7 @@ import { timestampConvertor , meanTemperature,removeChild,infoPerDay} from './fu
 import { coordData,resumeDayCard,resumeCard ,tagInfoday,windTab, depressionTab} from './tags.js';
 import { plot, plotErrorBar } from './plots.js';
 import { config } from './config.js';
-/* 
-const apiKey ="0ecda526c9c0b753226bce63f940887d" */
+
 const apiKey = config.MY_KEY;
 let main = document.querySelector('main');
 let header = document.querySelector('header');
